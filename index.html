@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-    
     <script src="https://cdn.tailwindcss.com"></script>
     
     <script>
@@ -30,47 +29,50 @@
     
     <style>
         body {
-            background-color: #05050A;
-            /* Качественный фон звездного неба с туманностью */
-            background-image: linear-gradient(rgba(5, 5, 10, 0.7), rgba(5, 5, 10, 0.9)), url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2000&auto=format&fit=crop');
+            background-color: #030305;
+            /* Единый высококачественный фон глубокого космоса */
+            background-image: 
+                linear-gradient(rgba(3, 3, 5, 0.6), rgba(3, 3, 5, 0.9)), 
+                url('https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?q=80&w=2000&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             color: #E2E8F0;
             margin: 0;
-            padding: 20px;
+            padding: 24px;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
+        /* Основной контейнер из матового стекла */
         .glass-container {
-            background: rgba(15, 10, 30, 0.4);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 16px;
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.9), inset 0 0 20px rgba(212, 175, 55, 0.05);
+            background: rgba(10, 8, 20, 0.55);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(212, 175, 55, 0.05);
             width: 100%;
-            max-width: 1280px;
+            max-width: 1300px;
             height: 90vh;
             display: flex;
             flex-direction: column;
             overflow: hidden;
         }
 
+        /* Элементы меню и панели */
         .glass-panel {
-            background: rgba(20, 15, 40, 0.5);
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            background: rgba(15, 12, 30, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.2);
             border-radius: 12px;
-            backdrop-filter: blur(12px);
-            box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.1);
+            transition: all 0.3s ease;
         }
 
         .gold-glow-text {
             color: #F3E5AB;
-            text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
         }
 
         .nav-item {
@@ -86,45 +88,54 @@
         }
 
         .nav-item:hover {
-            background: rgba(212, 175, 55, 0.1);
-            border-color: rgba(212, 175, 55, 0.3);
+            background: rgba(212, 175, 55, 0.08);
+            border-color: rgba(212, 175, 55, 0.2);
         }
 
         .nav-active {
-            background: rgba(212, 175, 55, 0.2);
-            border-color: rgba(212, 175, 55, 0.6);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+            background: rgba(212, 175, 55, 0.15);
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
         }
 
-        /* Карточки игр теперь с реальными картинками */
+        /* Главный баннер */
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(20, 15, 40, 0.7) 0%, rgba(10, 8, 20, 0.9) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: inset 0 0 40px rgba(212, 175, 55, 0.05), 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        /* Карточки игр */
         .mystic-card {
-            border: 1px solid rgba(212, 175, 55, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.3);
             border-radius: 12px;
             aspect-ratio: 2/3;
             position: relative;
             overflow: hidden;
             transition: all 0.4s ease;
             cursor: pointer;
-            background-color: #0A0A15;
+            background-color: #0A0A10;
         }
 
         .mystic-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.8;
+            opacity: 0.6;
             transition: opacity 0.4s ease, transform 0.4s ease;
+            filter: grayscale(20%) sepia(20%) hue-rotate(220deg);
         }
 
         .mystic-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(212, 175, 55, 1);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.8), 0 0 25px rgba(212, 175, 55, 0.4);
+            transform: translateY(-6px);
+            border-color: rgba(212, 175, 55, 0.8);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 20px rgba(212, 175, 55, 0.2);
         }
 
         .mystic-card:hover img {
             opacity: 1;
             transform: scale(1.05);
+            filter: none;
         }
 
         .card-title {
@@ -132,160 +143,118 @@
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 20px 10px 10px;
-            background: linear-gradient(to top, rgba(5,5,15,1) 0%, rgba(5,5,15,0) 100%);
+            padding: 24px 12px 12px;
+            background: linear-gradient(to top, rgba(5,5,10,0.95) 0%, rgba(5,5,10,0) 100%);
             text-align: center;
             font-family: 'Cinzel', serif;
-            font-size: 11px;
+            font-size: 12px;
             color: #F3E5AB;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
         }
 
-        /* Центральная луна из реального изображения */
-        .moon-image-container {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            position: relative;
-            margin: 0 auto 20px auto;
-            box-shadow: 0 0 60px rgba(255, 255, 255, 0.3), 0 0 120px rgba(212,175,55,0.2);
-            overflow: hidden;
-        }
-
-        .moon-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            mix-blend-mode: lighten;
-        }
-
-        .astrology-ring {
-            position: absolute;
-            top: -30px; left: -30px; right: -30px; bottom: -30px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 50%;
-            animation: spin 80s linear infinite;
-        }
-        
-        .astrology-ring::before {
-            content: '♊ ♈ ♋ ♍ ♎ ♏ ♐ ♑ ♒ ♓';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            font-size: 14px;
-            color: rgba(212, 175, 55, 0.6);
-            letter-spacing: 42px;
-            text-align: center;
-            line-height: 260px;
-            animation: spin 60s linear infinite reverse;
-        }
-
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: rgba(212, 175, 55, 0.4); }
+        ::-webkit-scrollbar-thumb { background: rgba(212, 175, 55, 0.3); }
     </style>
 </head>
 <body>
 
     <div class="glass-container">
         <!-- Header -->
-        <header class="h-[80px] border-b border-gold/20 flex items-center justify-between px-10 bg-black/40">
+        <header class="h-[80px] border-b border-gold/15 flex items-center justify-between px-10">
             <div class="flex items-center gap-4">
-                <img src="https://img.icons8.com/color/48/000000/dragon.png" alt="Dragon" class="w-10 h-10 filter brightness-200 sepia">
-                <div class="font-serif text-3xl tracking-[0.2em] gold-glow-text">Moondrag</div>
+                <div class="font-serif text-3xl tracking-[0.2em] gold-glow-text">MOONDRAG</div>
             </div>
-            <div class="flex gap-6 text-gold/80 font-serif text-lg">
+            <div class="flex gap-6 text-gold/60 font-serif text-lg">
                 <span>♊</span><span>♈</span><span>♋</span><span>♍</span>
             </div>
         </header>
 
         <div class="flex flex-1 overflow-hidden">
             <!-- Sidebar -->
-            <aside class="w-[240px] p-6 flex flex-col gap-6 overflow-y-auto border-r border-gold/20">
-                <div class="glass-panel p-3">
+            <aside class="w-[260px] p-6 flex flex-col gap-6 overflow-y-auto border-r border-gold/15">
+                <div class="glass-panel p-3 mt-4">
                     <div class="nav-item nav-active">
                         <div class="flex items-center gap-4">
-                            <span class="text-gold text-lg">✪</span>
-                            <span class="font-serif text-sm text-goldlight tracking-wide">Casino</span>
+                            <span class="text-gold text-lg">✦</span>
+                            <span class="font-serif text-sm text-goldlight tracking-widest uppercase">Casino</span>
                         </div>
-                        <span class="text-gold text-xs">★</span>
                     </div>
                     <div class="nav-item">
                         <div class="flex items-center gap-4">
-                            <span class="text-gold/50 text-lg">⚽</span>
-                            <span class="font-serif text-sm text-white/70 tracking-wide">Sports</span>
+                            <span class="text-gold/40 text-lg">✦</span>
+                            <span class="font-serif text-sm text-white/60 tracking-widest uppercase">Sports</span>
                         </div>
-                        <span class="text-gold/50 text-xs">★</span>
                     </div>
                 </div>
 
                 <div class="glass-panel p-3">
                     <div class="nav-item">
                         <div class="flex items-center gap-4">
-                            <span class="text-gold/50 text-lg">⚔</span>
-                            <span class="font-serif text-sm text-white/70 tracking-wide">Cybersports</span>
+                            <span class="text-gold/40 text-lg">✦</span>
+                            <span class="font-serif text-sm text-white/60 tracking-widest uppercase">Cybersports</span>
                         </div>
-                        <span class="text-gold/50 text-xs">★</span>
                     </div>
                     <div class="nav-item">
                         <div class="flex items-center gap-4">
-                            <span class="text-gold/50 text-lg">♚</span>
-                            <span class="font-serif text-sm text-white/70 tracking-wide">VIP Club</span>
+                            <span class="text-gold/40 text-lg">✦</span>
+                            <span class="font-serif text-sm text-white/60 tracking-widest uppercase">VIP Club</span>
                         </div>
-                        <span class="text-gold/50 text-xs">★</span>
                     </div>
                 </div>
             </aside>
 
             <!-- Main Content -->
-            <main class="flex-1 p-10 overflow-y-auto relative">
+            <main class="flex-1 p-10 overflow-y-auto">
                 
-                <!-- Central Banner (Real Moon Image) -->
-                <div class="glass-panel p-12 flex flex-col items-center justify-center mb-12 relative max-w-4xl mx-auto">
-                    <div class="relative">
-                        <div class="astrology-ring"></div>
-                        <div class="moon-image-container">
-                            <!-- Изображение реальной луны -->
-                            <img src="https://images.unsplash.com/photo-1522030299830-16b8d3d049fe?q=80&w=600&auto=format&fit=crop" alt="Moon">
-                        </div>
-                    </div>
-                    <h1 class="font-serif text-5xl mt-10 gold-glow-text tracking-widest uppercase">Welcome to Moondrag</h1>
+                <!-- Hero Banner -->
+                <div class="hero-banner rounded-2xl p-16 flex flex-col items-center justify-center mb-12 relative max-w-5xl mx-auto overflow-hidden">
+                    <!-- Легкое золотое свечение на фоне баннера -->
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-gold/5 pointer-events-none"></div>
+                    
+                    <h1 class="font-serif text-5xl md:text-6xl gold-glow-text tracking-[0.15em] uppercase text-center relative z-10">
+                        Welcome to Moondrag
+                    </h1>
+                    <p class="mt-6 text-gold/70 font-sans text-lg tracking-widest uppercase relative z-10">
+                        Unlock Cosmic Rewards
+                    </p>
+                    <button class="mt-8 px-10 py-3 border border-gold/50 text-goldlight font-serif uppercase tracking-widest text-sm hover:bg-gold/10 transition-all rounded-sm relative z-10">
+                        Enter the Void
+                    </button>
                 </div>
 
-                <!-- Games Grid with Real Mystic Images -->
-                <h2 class="font-serif text-2xl mb-8 text-goldlight tracking-[0.1em]">Drelymioriss (Top Games)</h2>
+                <!-- Games Grid -->
+                <h2 class="font-serif text-xl mb-8 text-gold/80 tracking-[0.15em] uppercase text-center md:text-left">
+                    Drelymioriss Collection
+                </h2>
                 
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5">
                     <div class="mystic-card">
-                        <img src="https://images.unsplash.com/photo-1618472609777-b038f1f04b8d?q=80&w=400&auto=format&fit=crop" alt="Cosmic Fortune">
+                        <img src="https://images.unsplash.com/photo-1618472609777-b038f1f04b8d?q=80&w=400&auto=format&fit=crop" alt="Game">
                         <div class="card-title">Cosmic Fortune</div>
                     </div>
                     <div class="mystic-card">
-                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=400&auto=format&fit=crop" alt="Oracle's Vision">
+                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=400&auto=format&fit=crop" alt="Game">
                         <div class="card-title">Oracle's Vision</div>
                     </div>
                     <div class="mystic-card">
-                        <img src="https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=400&auto=format&fit=crop" alt="Golden Scales">
+                        <img src="https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=400&auto=format&fit=crop" alt="Game">
                         <div class="card-title">Golden Scales</div>
                     </div>
                     <div class="mystic-card">
-                        <img src="https://images.unsplash.com/photo-1534337623306-e13f163e6e12?q=80&w=400&auto=format&fit=crop" alt="Astral Gateway">
+                        <img src="https://images.unsplash.com/photo-1534337623306-e13f163e6e12?q=80&w=400&auto=format&fit=crop" alt="Game">
                         <div class="card-title">Astral Gateway</div>
                     </div>
                     <div class="mystic-card">
-                        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=400&auto=format&fit=crop" alt="Dragon's Hoard">
+                        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=400&auto=format&fit=crop" alt="Game">
                         <div class="card-title">Dragon's Hoard</div>
                     </div>
                     <div class="mystic-card">
-                        <img src="https://images.unsplash.com/photo-1633519803157-7f00d35e1df1?q=80&w=400&auto=format&fit=crop" alt="Storm Caller">
+                        <img src="https://images.unsplash.com/photo-1633519803157-7f00d35e1df1?q=80&w=400&auto=format&fit=crop" alt="Game">
                         <div class="card-title">Storm Caller</div>
                     </div>
                 </div>
-
             </main>
         </div>
     </div>
