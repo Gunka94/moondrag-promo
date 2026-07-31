@@ -8,140 +8,93 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            background: linear-gradient(135deg, #0a0a1a 0%, #0f0f2e 40%, #1a1a3e 100%);
-            min-height: 100vh;
             font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0a1a 0%, #0f0f2e 40%, #1a1a3e 100%);
             color: #e2e8f0;
+            min-height: 100vh;
         }
-        
-        .glass-panel {
-            background: rgba(15, 15, 46, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
-        
-        .game-card {
-            background: linear-gradient(145deg, rgba(30,30,60,0.8) 0%, rgba(20,20,45,0.9) 100%);
-            border: 1px solid rgba(192,192,192,0.15);
-            transition: all 0.3s ease;
-        }
-        
-        .game-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(251,191,36,0.4);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 20px rgba(251,191,36,0.1);
-        }
-        
-        .game-overlay {
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .game-card:hover .game-overlay {
-            opacity: 1;
-        }
-        
-        .play-btn {
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-        }
-        
-        .game-card:hover .play-btn {
-            transform: scale(1);
-        }
-        
-        .gold-gradient {
-            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-        }
-        
-        .gold-text {
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        .bg-gold { background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); }
+        .text-gold {
             background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
-        .live-dot {
+        .glass {
+            background: rgba(15, 15, 46, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(251,191,36,0.08) 0%, rgba(15,15,46,0.6) 50%, rgba(99,102,241,0.08) 100%);
+        }
+        .card-gradient {
+            background: linear-gradient(145deg, rgba(30,30,60,0.8) 0%, rgba(20,20,45,0.9) 100%);
+        }
+        .game-icon-bg {
+            background: linear-gradient(135deg, #1e1e3f 0%, #2d2d5a 100%);
+        }
+        .pulse-dot {
             animation: pulse 2s infinite;
         }
-        
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.4; }
         }
-        
-        .hero-bg {
-            background: linear-gradient(135deg, rgba(251,191,36,0.08) 0%, rgba(15,15,46,0.6) 50%, rgba(99,102,241,0.08) 100%);
+        .game-card-hover:hover {
+            transform: translateY(-4px);
+            border-color: rgba(251,191,36,0.4);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 20px rgba(251,191,36,0.1);
         }
-        
-        .hero-glow {
-            background: radial-gradient(circle, rgba(251,191,36,0.12) 0%, transparent 70%);
+        .play-btn-scale {
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
         }
-        
-        .nav-item:hover {
-            background: rgba(255,255,255,0.04);
+        .group:hover .play-btn-scale {
+            transform: scale(1);
         }
-        
-        .nav-item.active {
+        .overlay-hidden {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .group:hover .overlay-hidden {
+            opacity: 1;
+        }
+        .nav-active {
             background: rgba(251,191,36,0.1);
             border-left: 3px solid #fbbf24;
-        }
-        
-        .nav-item.vip {
             color: #fbbf24;
         }
-        
-        .nav-item.vip:hover {
-            background: rgba(251,191,36,0.08);
-        }
-        
-        .filter-btn.active {
+        .nav-vip { color: #fbbf24; }
+        .nav-vip:hover { background: rgba(251,191,36,0.08); }
+        .filter-active {
             background: rgba(251,191,36,0.1);
             color: #fbbf24;
             border-color: rgba(251,191,36,0.3);
         }
-        
-        .kyc-box {
+        .kyc-bg {
             background: rgba(251,191,36,0.05);
             border: 1px solid rgba(251,191,36,0.15);
         }
-        
-        .win-amount {
-            color: #22c55e;
-        }
-        
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: rgba(255,255,255,0.02);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(255,255,255,0.1);
-            border-radius: 3px;
-        }
+        .aspect-3-4 { aspect-ratio: 3/4; }
+        .h-70 { height: 70%; }
+        .top-73 { top: 73px; }
+        .h-screen-73 { height: calc(100vh - 73px); }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
     </style>
 </head>
 <body class="antialiased">
 
     <!-- Header -->
-    <header class="glass-panel border-b border-white/5 sticky top-0 z-50">
+    <header class="glass border-b border-white/5 sticky top-0 z-50">
         <div class="flex items-center justify-between px-4 md:px-8 py-4">
-            <div class="font-serif text-2xl md:text-3xl font-black tracking-wide gold-text">
+            <div class="font-playfair text-2xl md:text-3xl font-black tracking-wide text-gold">
                 MOONDRAG
             </div>
             
@@ -150,14 +103,14 @@
                     <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
                 </svg>
                 <input type="text" placeholder="Search games..." 
-                    class="w-full pl-12 pr-4 py-3 rounded-xl border border-white/[0.08] bg-white/[0.04] text-slate-200 text-sm outline-none focus:border-amber-400/40 focus:bg-white/[0.06] transition-all placeholder:text-white/30">
+                    class="w-full pl-12 pr-4 py-3 rounded-xl border border-white/10 bg-white/5 text-slate-200 text-sm outline-none focus:border-amber-400/40 focus:bg-white/10 transition-all placeholder:text-white/30">
             </div>
             
             <div class="flex gap-3">
                 <button class="px-4 md:px-6 py-2.5 rounded-xl border border-white/20 text-slate-200 font-semibold text-sm hover:border-amber-400/50 hover:text-amber-400 transition-all">
                     Log In
                 </button>
-                <button class="px-4 md:px-6 py-2.5 rounded-xl gold-gradient text-[#0a0a1a] font-bold text-sm shadow-[0_4px_20px_rgba(251,191,36,0.25)] hover:shadow-[0_6px_30px_rgba(251,191,36,0.4)] hover:-translate-y-0.5 transition-all">
+                <button class="px-4 md:px-6 py-2.5 rounded-xl bg-gold font-bold text-sm shadow-lg shadow-amber-400/20 hover:shadow-xl hover:shadow-amber-400/30 hover:-translate-y-0.5 transition-all" style="color: #0a0a1a;">
                     Sign Up
                 </button>
             </div>
@@ -166,38 +119,38 @@
 
     <div class="flex flex-1">
         <!-- Sidebar -->
-        <nav class="hidden lg:block w-56 p-6 bg-[#0a0a1a]/50 border-r border-white/[0.04] sticky top-[73px] h-[calc(100vh-73px)] overflow-y-auto">
-            <div class="nav-item active flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer mb-1 text-sm font-medium text-amber-400">
+        <nav class="hidden lg:block w-56 p-6 border-r border-white/5 sticky top-73 h-screen-73 overflow-y-auto" style="background: rgba(10,10,26,0.5);">
+            <div class="nav-active flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer mb-1 text-sm font-medium">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                 </svg>
                 Casino
             </div>
-            <div class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer mb-1 text-sm font-medium text-white/60 hover:text-slate-200 transition-all">
+            <div class="flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer mb-1 text-sm font-medium text-white/60 hover:bg-white/5 hover:text-slate-200 transition-all">
                 <svg class="w-5 h-5 opacity-70" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
                 </svg>
                 Sports
             </div>
-            <div class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer mb-1 text-sm font-medium text-white/60 hover:text-slate-200 transition-all">
+            <div class="flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer mb-1 text-sm font-medium text-white/60 hover:bg-white/5 hover:text-slate-200 transition-all">
                 <svg class="w-5 h-5 opacity-70" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M6 11h4M8 9v4"/><rect x="2" y="6" width="20" height="12" rx="2"/>
                 </svg>
                 Cybersports
             </div>
-            <div class="nav-item vip flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer mb-1 text-sm font-medium">
+            <div class="nav-vip flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer mb-1 text-sm font-medium hover:bg-amber-400/10 transition-all">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/>
                 </svg>
                 VIP Club
             </div>
-            <div class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer mb-1 text-sm font-medium text-white/60 hover:text-slate-200 transition-all">
+            <div class="flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer mb-1 text-sm font-medium text-white/60 hover:bg-white/5 hover:text-slate-200 transition-all">
                 <svg class="w-5 h-5 opacity-70" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/><path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4z"/>
                 </svg>
                 Promotions
             </div>
-            <div class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer mb-1 text-sm font-medium text-white/60 hover:text-slate-200 transition-all">
+            <div class="flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer mb-1 text-sm font-medium text-white/60 hover:bg-white/5 hover:text-slate-200 transition-all">
                 <svg class="w-5 h-5 opacity-70" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M18 18.7a9 9 0 1 0-12 0"/><path d="M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/><path d="M12 11v6"/>
                 </svg>
@@ -208,16 +161,16 @@
         <!-- Main Content -->
         <main class="flex-1 p-4 md:p-8 overflow-y-auto">
             <!-- Hero -->
-            <section class="relative overflow-hidden rounded-2xl p-8 md:p-16 mb-10 hero-bg border border-white/[0.06] backdrop-blur-md">
-                <div class="absolute -top-1/2 -right-[10%] w-[500px] h-[500px] hero-glow pointer-events-none"></div>
+            <section class="relative overflow-hidden rounded-2xl p-8 md:p-16 mb-10 hero-gradient border border-white/10 backdrop-blur-md">
+                <div class="absolute -top-1/2 -right-[10%] w-[500px] h-[500px] pointer-events-none" style="background: radial-gradient(circle, rgba(251,191,36,0.12) 0%, transparent 70%);"></div>
                 
-                <h1 class="font-serif text-3xl md:text-5xl lg:text-6xl font-black text-slate-50 mb-4 tracking-wider leading-tight relative z-10">
+                <h1 class="font-playfair text-3xl md:text-5xl lg:text-6xl font-black text-slate-50 mb-4 tracking-wider leading-tight relative z-10">
                     WELCOME TO<br>MOONDRAG
                 </h1>
                 <p class="text-base md:text-lg text-white/60 mb-8 max-w-lg relative z-10">
                     Unlock Cosmic Rewards. Up to 5 BTC + 200 Free Spins
                 </p>
-                <button class="px-8 md:px-10 py-4 rounded-xl gold-gradient text-[#0a0a1a] font-bold text-base shadow-[0_4px_20px_rgba(251,191,36,0.3)] hover:shadow-[0_6px_30px_rgba(251,191,36,0.45)] transition-all relative z-10">
+                <button class="px-8 md:px-10 py-4 rounded-xl bg-gold font-bold text-base shadow-lg shadow-amber-400/20 hover:shadow-xl hover:shadow-amber-400/30 transition-all relative z-10" style="color: #0a0a1a;">
                     Claim Bonus
                 </button>
             </section>
@@ -226,19 +179,20 @@
             <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-4">
                 <h2 class="text-xl md:text-2xl font-bold text-slate-100">Popular Games</h2>
                 <div class="flex flex-wrap gap-2" id="filters">
-                    <button class="filter-btn active px-4 py-2 rounded-lg border text-xs font-medium transition-all" onclick="setFilter(this)">Top Games</button>
-                    <button class="filter-btn px-4 py-2 rounded-lg border border-white/[0.08] bg-white/[0.03] text-white/50 text-xs font-medium hover:bg-amber-400/10 hover:text-amber-400 transition-all" onclick="setFilter(this)">New Releases</button>
-                    <button class="filter-btn px-4 py-2 rounded-lg border border-white/[0.08] bg-white/[0.03] text-white/50 text-xs font-medium hover:bg-amber-400/10 hover:text-amber-400 transition-all" onclick="setFilter(this)">Live Dealer</button>
-                    <button class="filter-btn px-4 py-2 rounded-lg border border-white/[0.08] bg-white/[0.03] text-white/50 text-xs font-medium hover:bg-amber-400/10 hover:text-amber-400 transition-all" onclick="setFilter(this)">Bonus Buy</button>
+                    <button class="filter-active px-4 py-2 rounded-lg border text-xs font-medium transition-all" onclick="setFilter(this)">Top Games</button>
+                    <button class="px-4 py-2 rounded-lg border border-white/10 bg-white/5 text-white/50 text-xs font-medium hover:bg-amber-400/10 hover:text-amber-400 transition-all" onclick="setFilter(this)">New Releases</button>
+                    <button class="px-4 py-2 rounded-lg border border-white/10 bg-white/5 text-white/50 text-xs font-medium hover:bg-amber-400/10 hover:text-amber-400 transition-all" onclick="setFilter(this)">Live Dealer</button>
+                    <button class="px-4 py-2 rounded-lg border border-white/10 bg-white/5 text-white/50 text-xs font-medium hover:bg-amber-400/10 hover:text-amber-400 transition-all" onclick="setFilter(this)">Bonus Buy</button>
                 </div>
             </div>
 
             <!-- Game Grid -->
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-5 mb-10">
-                <div class="game-card rounded-2xl overflow-hidden cursor-pointer aspect-[3/4] group">
-                    <div class="h-[70%] bg-gradient-to-br from-[#1e1e3f] to-[#2d2d5a] flex items-center justify-center text-4xl md:text-5xl relative">
-                        <div class="game-overlay absolute inset-0 bg-[#0a0a1a]/85 flex items-center justify-center">
-                            <button class="play-btn px-8 py-3 rounded-xl gold-gradient text-[#0a0a1a] font-bold shadow-[0_4px_20px_rgba(251,191,36,0.3)]">Play</button>
+                <!-- Game Card 1 -->
+                <div class="card-gradient border border-white/10 rounded-2xl overflow-hidden cursor-pointer aspect-3-4 group game-card-hover transition-all duration-300">
+                    <div class="h-70 game-icon-bg flex items-center justify-center text-4xl md:text-5xl relative">
+                        <div class="overlay-hidden absolute inset-0 flex items-center justify-center" style="background: rgba(10,10,26,0.85);">
+                            <button class="play-btn-scale px-8 py-3 rounded-xl bg-gold font-bold shadow-lg shadow-amber-400/20" style="color: #0a0a1a;">Play</button>
                         </div>
                         🎰
                     </div>
@@ -248,10 +202,11 @@
                     </div>
                 </div>
 
-                <div class="game-card rounded-2xl overflow-hidden cursor-pointer aspect-[3/4] group">
-                    <div class="h-[70%] bg-gradient-to-br from-[#1e1e3f] to-[#2d2d5a] flex items-center justify-center text-4xl md:text-5xl relative">
-                        <div class="game-overlay absolute inset-0 bg-[#0a0a1a]/85 flex items-center justify-center">
-                            <button class="play-btn px-8 py-3 rounded-xl gold-gradient text-[#0a0a1a] font-bold shadow-[0_4px_20px_rgba(251,191,36,0.3)]">Play</button>
+                <!-- Game Card 2 -->
+                <div class="card-gradient border border-white/10 rounded-2xl overflow-hidden cursor-pointer aspect-3-4 group game-card-hover transition-all duration-300">
+                    <div class="h-70 game-icon-bg flex items-center justify-center text-4xl md:text-5xl relative">
+                        <div class="overlay-hidden absolute inset-0 flex items-center justify-center" style="background: rgba(10,10,26,0.85);">
+                            <button class="play-btn-scale px-8 py-3 rounded-xl bg-gold font-bold shadow-lg shadow-amber-400/20" style="color: #0a0a1a;">Play</button>
                         </div>
                         🃏
                     </div>
@@ -261,10 +216,11 @@
                     </div>
                 </div>
 
-                <div class="game-card rounded-2xl overflow-hidden cursor-pointer aspect-[3/4] group">
-                    <div class="h-[70%] bg-gradient-to-br from-[#1e1e3f] to-[#2d2d5a] flex items-center justify-center text-4xl md:text-5xl relative">
-                        <div class="game-overlay absolute inset-0 bg-[#0a0a1a]/85 flex items-center justify-center">
-                            <button class="play-btn px-8 py-3 rounded-xl gold-gradient text-[#0a0a1a] font-bold shadow-[0_4px_20px_rgba(251,191,36,0.3)]">Play</button>
+                <!-- Game Card 3 -->
+                <div class="card-gradient border border-white/10 rounded-2xl overflow-hidden cursor-pointer aspect-3-4 group game-card-hover transition-all duration-300">
+                    <div class="h-70 game-icon-bg flex items-center justify-center text-4xl md:text-5xl relative">
+                        <div class="overlay-hidden absolute inset-0 flex items-center justify-center" style="background: rgba(10,10,26,0.85);">
+                            <button class="play-btn-scale px-8 py-3 rounded-xl bg-gold font-bold shadow-lg shadow-amber-400/20" style="color: #0a0a1a;">Play</button>
                         </div>
                         🎲
                     </div>
@@ -274,10 +230,11 @@
                     </div>
                 </div>
 
-                <div class="game-card rounded-2xl overflow-hidden cursor-pointer aspect-[3/4] group">
-                    <div class="h-[70%] bg-gradient-to-br from-[#1e1e3f] to-[#2d2d5a] flex items-center justify-center text-4xl md:text-5xl relative">
-                        <div class="game-overlay absolute inset-0 bg-[#0a0a1a]/85 flex items-center justify-center">
-                            <button class="play-btn px-8 py-3 rounded-xl gold-gradient text-[#0a0a1a] font-bold shadow-[0_4px_20px_rgba(251,191,36,0.3)]">Play</button>
+                <!-- Game Card 4 -->
+                <div class="card-gradient border border-white/10 rounded-2xl overflow-hidden cursor-pointer aspect-3-4 group game-card-hover transition-all duration-300">
+                    <div class="h-70 game-icon-bg flex items-center justify-center text-4xl md:text-5xl relative">
+                        <div class="overlay-hidden absolute inset-0 flex items-center justify-center" style="background: rgba(10,10,26,0.85);">
+                            <button class="play-btn-scale px-8 py-3 rounded-xl bg-gold font-bold shadow-lg shadow-amber-400/20" style="color: #0a0a1a;">Play</button>
                         </div>
                         🚀
                     </div>
@@ -287,10 +244,11 @@
                     </div>
                 </div>
 
-                <div class="game-card rounded-2xl overflow-hidden cursor-pointer aspect-[3/4] group">
-                    <div class="h-[70%] bg-gradient-to-br from-[#1e1e3f] to-[#2d2d5a] flex items-center justify-center text-4xl md:text-5xl relative">
-                        <div class="game-overlay absolute inset-0 bg-[#0a0a1a]/85 flex items-center justify-center">
-                            <button class="play-btn px-8 py-3 rounded-xl gold-gradient text-[#0a0a1a] font-bold shadow-[0_4px_20px_rgba(251,191,36,0.3)]">Play</button>
+                <!-- Game Card 5 -->
+                <div class="card-gradient border border-white/10 rounded-2xl overflow-hidden cursor-pointer aspect-3-4 group game-card-hover transition-all duration-300">
+                    <div class="h-70 game-icon-bg flex items-center justify-center text-4xl md:text-5xl relative">
+                        <div class="overlay-hidden absolute inset-0 flex items-center justify-center" style="background: rgba(10,10,26,0.85);">
+                            <button class="play-btn-scale px-8 py-3 rounded-xl bg-gold font-bold shadow-lg shadow-amber-400/20" style="color: #0a0a1a;">Play</button>
                         </div>
                         💎
                     </div>
@@ -302,66 +260,66 @@
             </div>
 
             <!-- Live Wins -->
-            <div class="bg-[#0f0f2e]/40 border border-white/[0.05] rounded-2xl p-6 backdrop-blur-md mb-10">
+            <div class="border border-white/5 rounded-2xl p-6 backdrop-blur-md mb-10" style="background: rgba(15,15,46,0.4);">
                 <div class="flex items-center gap-2 mb-5">
-                    <div class="w-2 h-2 bg-green-500 rounded-full live-dot"></div>
+                    <div class="w-2 h-2 bg-green-500 rounded-full pulse-dot"></div>
                     <span class="font-bold text-lg">Live Wins</span>
                 </div>
                 
                 <div class="overflow-x-auto">
-                    <table class="w-full min-w-[500px]">
+                    <table class="w-full">
                         <thead>
                             <tr>
-                                <th class="text-left py-3 px-4 text-xs font-semibold text-white/40 uppercase tracking-wider border-b border-white/[0.06]">Game</th>
-                                <th class="text-left py-3 px-4 text-xs font-semibold text-white/40 uppercase tracking-wider border-b border-white/[0.06]">Player</th>
-                                <th class="text-left py-3 px-4 text-xs font-semibold text-white/40 uppercase tracking-wider border-b border-white/[0.06]">Time</th>
-                                <th class="text-left py-3 px-4 text-xs font-semibold text-white/40 uppercase tracking-wider border-b border-white/[0.06]">Win</th>
+                                <th class="text-left py-3 px-4 text-xs font-semibold text-white/40 uppercase tracking-wider border-b border-white/10">Game</th>
+                                <th class="text-left py-3 px-4 text-xs font-semibold text-white/40 uppercase tracking-wider border-b border-white/10">Player</th>
+                                <th class="text-left py-3 px-4 text-xs font-semibold text-white/40 uppercase tracking-wider border-b border-white/10">Time</th>
+                                <th class="text-left py-3 px-4 text-xs font-semibold text-white/40 uppercase tracking-wider border-b border-white/10">Win</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="border-b border-white/[0.03] last:border-0">
+                            <tr class="border-b border-white/5 last:border-0">
                                 <td class="py-3.5 px-4">
                                     <div class="flex items-center gap-2.5">
-                                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#1e1e3f] to-[#2d2d5a] flex items-center justify-center text-base">🎰</div>
+                                        <div class="w-8 h-8 rounded-lg game-icon-bg flex items-center justify-center text-base">🎰</div>
                                         <span class="text-sm">Starlight Princess</span>
                                     </div>
                                 </td>
                                 <td class="py-3.5 px-4 font-mono text-sm text-white/50">Cryp***89</td>
                                 <td class="py-3.5 px-4 text-sm text-white/40">2 min ago</td>
-                                <td class="py-3.5 px-4 font-mono font-bold win-amount text-sm">+2.45 BTC</td>
+                                <td class="py-3.5 px-4 font-mono font-bold text-green-400 text-sm">+2.45 BTC</td>
                             </tr>
-                            <tr class="border-b border-white/[0.03] last:border-0">
+                            <tr class="border-b border-white/5 last:border-0">
                                 <td class="py-3.5 px-4">
                                     <div class="flex items-center gap-2.5">
-                                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#1e1e3f] to-[#2d2d5a] flex items-center justify-center text-base">🚀</div>
+                                        <div class="w-8 h-8 rounded-lg game-icon-bg flex items-center justify-center text-base">🚀</div>
                                         <span class="text-sm">Space Miners</span>
                                     </div>
                                 </td>
                                 <td class="py-3.5 px-4 font-mono text-sm text-white/50">Moon***42</td>
                                 <td class="py-3.5 px-4 text-sm text-white/40">5 min ago</td>
-                                <td class="py-3.5 px-4 font-mono font-bold win-amount text-sm">+14.20 ETH</td>
+                                <td class="py-3.5 px-4 font-mono font-bold text-green-400 text-sm">+14.20 ETH</td>
                             </tr>
-                            <tr class="border-b border-white/[0.03] last:border-0">
+                            <tr class="border-b border-white/5 last:border-0">
                                 <td class="py-3.5 px-4">
                                     <div class="flex items-center gap-2.5">
-                                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#1e1e3f] to-[#2d2d5a] flex items-center justify-center text-base">💎</div>
+                                        <div class="w-8 h-8 rounded-lg game-icon-bg flex items-center justify-center text-base">💎</div>
                                         <span class="text-sm">Neon Gems</span>
                                     </div>
                                 </td>
                                 <td class="py-3.5 px-4 font-mono text-sm text-white/50">Drag***77</td>
                                 <td class="py-3.5 px-4 text-sm text-white/40">8 min ago</td>
-                                <td class="py-3.5 px-4 font-mono font-bold win-amount text-sm">+1,250 USDT</td>
+                                <td class="py-3.5 px-4 font-mono font-bold text-green-400 text-sm">+1,250 USDT</td>
                             </tr>
-                            <tr class="border-b border-white/[0.03] last:border-0">
+                            <tr class="border-b border-white/5 last:border-0">
                                 <td class="py-3.5 px-4">
                                     <div class="flex items-center gap-2.5">
-                                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#1e1e3f] to-[#2d2d5a] flex items-center justify-center text-base">🃏</div>
+                                        <div class="w-8 h-8 rounded-lg game-icon-bg flex items-center justify-center text-base">🃏</div>
                                         <span class="text-sm">Blackjack Cosmos</span>
                                     </div>
                                 </td>
                                 <td class="py-3.5 px-4 font-mono text-sm text-white/50">Vip***01</td>
                                 <td class="py-3.5 px-4 text-sm text-white/40">12 min ago</td>
-                                <td class="py-3.5 px-4 font-mono font-bold win-amount text-sm">+0.88 BTC</td>
+                                <td class="py-3.5 px-4 font-mono font-bold text-green-400 text-sm">+0.88 BTC</td>
                             </tr>
                         </tbody>
                     </table>
@@ -371,33 +329,33 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-[#0a0a1a]/80 border-t border-white/[0.05] px-4 md:px-8 py-10 mt-auto">
-        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-10">
+    <footer class="border-t border-white/5 px-4 md:px-8 py-10 mt-auto" style="background: rgba(10,10,26,0.8);">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
             <div>
-                <div class="font-serif text-2xl font-black gold-text mb-4">
+                <div class="font-playfair text-2xl font-black text-gold mb-4">
                     MOONDRAG
                 </div>
-                <p class="text-[13px] text-white/40 leading-relaxed mb-4">
+                <p class="text-xs text-white/40 leading-relaxed mb-4">
                     The premier crypto casino experience. Secure, transparent, and built for the future of gaming.
                 </p>
                 <div class="flex gap-4">
-                    <div class="w-9 h-9 rounded-full bg-white/[0.05] border border-white/[0.08] flex items-center justify-center text-lg">₿</div>
-                    <div class="w-9 h-9 rounded-full bg-white/[0.05] border border-white/[0.08] flex items-center justify-center text-lg">Ξ</div>
-                    <div class="w-9 h-9 rounded-full bg-white/[0.05] border border-white/[0.08] flex items-center justify-center text-lg">₮</div>
+                    <div class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-lg">₿</div>
+                    <div class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-lg">Ξ</div>
+                    <div class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-lg">₮</div>
                 </div>
             </div>
             
             <div>
                 <h4 class="text-sm font-bold text-slate-100 uppercase tracking-wide mb-4">Legal</h4>
-                <a href="#" class="block text-[13px] text-white/40 mb-2.5 hover:text-amber-400 transition-colors">Terms of Service</a>
-                <a href="#" class="block text-[13px] text-white/40 mb-2.5 hover:text-amber-400 transition-colors">AML Policy</a>
-                <a href="#" class="block text-[13px] text-white/40 mb-2.5 hover:text-amber-400 transition-colors">Privacy Policy</a>
-                <a href="#" class="block text-[13px] text-white/40 mb-2.5 hover:text-amber-400 transition-colors">Responsible Gaming</a>
+                <a href="#" class="block text-xs text-white/40 mb-2.5 hover:text-amber-400 transition-colors">Terms of Service</a>
+                <a href="#" class="block text-xs text-white/40 mb-2.5 hover:text-amber-400 transition-colors">AML Policy</a>
+                <a href="#" class="block text-xs text-white/40 mb-2.5 hover:text-amber-400 transition-colors">Privacy Policy</a>
+                <a href="#" class="block text-xs text-white/40 mb-2.5 hover:text-amber-400 transition-colors">Responsible Gaming</a>
             </div>
             
             <div>
                 <h4 class="text-sm font-bold text-slate-100 uppercase tracking-wide mb-4">KYC</h4>
-                <div class="kyc-box rounded-xl p-4">
+                <div class="kyc-bg rounded-xl p-4">
                     <p class="text-xs text-white/50 leading-relaxed">
                         Для прохождения KYC отправьте документы на <span class="text-amber-400 font-semibold">kyc@moondrag.com</span>
                     </p>
@@ -408,14 +366,13 @@
 
     <script>
         function setFilter(btn) {
-            document.querySelectorAll('.filter-btn').forEach(b => {
-                b.classList.remove('active');
-                b.classList.add('border-white/[0.08]', 'bg-white/[0.03]', 'text-white/50');
-                b.classList.remove('border-amber-400/30', 'bg-amber-400/10', 'text-amber-400');
-            });
-            btn.classList.add('active');
-            btn.classList.remove('border-white/[0.08]', 'bg-white/[0.03]', 'text-white/50');
-            btn.classList.add('border-amber-400/30', 'bg-amber-400/10', 'text-amber-400');
+            var buttons = document.querySelectorAll('#filters button');
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove('filter-active');
+                buttons[i].classList.add('border-white/10', 'bg-white/5', 'text-white/50');
+            }
+            btn.classList.add('filter-active');
+            btn.classList.remove('border-white/10', 'bg-white/5', 'text-white/50');
         }
     </script>
 </body>
